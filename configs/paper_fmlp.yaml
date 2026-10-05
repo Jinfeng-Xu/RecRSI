@@ -1,0 +1,22 @@
+seed: 2023
+device: cuda
+output_dir: runs/paper_fmlp
+data: {corpus: data/processed/amazon-toys.json, max_length: 50}
+model:
+  name: fmlp
+  embedding_dim: 64
+  hidden_dim: 256
+  num_layers: 2
+  num_heads: 2
+  dropout: 0.5
+training:
+  steps: 10000
+  eval_every: 500
+  batch_size: 256
+  learning_rate: 0.001
+  weight_decay: 0.0
+  num_negatives: 256
+generation: {samples_per_history: 5, fidelity_k: 20, local_probability: 0.5, min_length: 3}
+evaluation: {cutoffs: [10, 20], beta: 0.5, batch_size: 512}
+protocol: {trajectories: [1, 2, 3], second_update: true, seed_stride: 1000}
+

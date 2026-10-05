@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rec-rsi"
+version = "0.1.0"
+description = "State retention and cross-generation evaluation for recursive self-improvement in recommendation"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+authors = [{name = "RecRSI Authors"}]
+dependencies = [
+  "numpy>=1.23",
+  "PyYAML>=6.0",
+  "torch>=2.0",
+]
+
+[project.scripts]
+rec-rsi = "rec_rsi.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["rec_rsi*"]

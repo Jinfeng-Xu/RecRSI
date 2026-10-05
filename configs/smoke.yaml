@@ -1,0 +1,40 @@
+seed: 17
+device: cpu
+output_dir: runs/smoke
+
+data:
+  corpus: examples/tiny_corpus.json
+  max_length: 12
+
+model:
+  name: gru4rec
+  embedding_dim: 16
+  hidden_dim: 24
+  num_layers: 1
+  num_heads: 2
+  dropout: 0.0
+
+training:
+  steps: 6
+  eval_every: 3
+  batch_size: 8
+  learning_rate: 0.003
+  weight_decay: 0.0
+  num_negatives: 8
+
+generation:
+  samples_per_history: 2
+  fidelity_k: 10
+  local_probability: 0.5
+  min_length: 3
+
+evaluation:
+  cutoffs: [5, 10]
+  beta: 0.5
+  batch_size: 16
+
+protocol:
+  trajectories: [1]
+  second_update: false
+  seed_stride: 100
+
